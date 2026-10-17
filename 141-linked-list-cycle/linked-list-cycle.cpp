@@ -9,28 +9,22 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        set<ListNode*> s;
-        struct ListNode *p=head;
-        while(p !=NULL)
+        ListNode *slow=head;
+        ListNode *fast=head;
+        //slow=head;
+        //fast=head;
+
+      while(fast!=NULL && fast->next != NULL)
+      {
+         slow = slow->next;
+         fast = fast->next->next;
+        if(slow==fast)
         {
-            if (s.find(p)!= s.end())
-            {
-                return true;
-            }
-            s.insert(p);
-            p=p->next;
+            return true;
         }
-         return false;
-
-            }
-        };
         
-    
-
-
-
-
-
-
         
-    
+      }
+    return false;
+    }
+};
